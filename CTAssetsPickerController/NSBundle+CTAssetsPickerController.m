@@ -18,8 +18,22 @@
 
 + (NSString *)ctassetsPickerControllerBundlePath
 {
-    return [[NSBundle bundleForClass:[CTAssetsPickerController class]]
-            pathForResource:@"CTAssetsPickerController" ofType:@"bundle"];
+    NSUserDefaults *def = [NSUserDefaults standardUserDefaults];
+    NSString *string = [def valueForKey:@"userLanguage"];
+    
+    if(string.length == 0){
+        NSArray* languages = [def objectForKey:@"AppleLanguages"];
+        NSString *current = [languages objectAtIndex:0];
+        string = current;
+    }
+    
+    NSString *bundlePath = [[NSBundle bundleForClass:[CTAssetsPickerController class]] pathForResource:@"CTAssetsPickerController" ofType:@"bundle"];
+    NSString *languagePath = [NSString stringWithFormat:@"%@.lproj",string];
+    NSString *totalPath = [bundlePath stringByAppendingPathComponent:languagePath];
+    
+    return totalPath;
+    
+    //return [[NSBundle bundleForClass:[CTAssetsPickerController class]] pathForResource:@"CTAssetsPickerController" ofType:@"bundle"];
 }
 
 @end
