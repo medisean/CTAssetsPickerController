@@ -13,14 +13,14 @@
 
 + (UIImage *)ctassetsPickerControllerImageNamed:(NSString *)name
 {
-    if ([UIImage respondsToSelector:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)])
-    {
-        return [UIImage imageNamed:name inBundle:[NSBundle ctassetsPickerControllerBundle] compatibleWithTraitCollection:nil];
-    }
-    else
-    {
+//    if ([UIImage respondsToSelector:@selector(imageNamed:inBundle:compatibleWithTraitCollection:)])
+//    {
+//        return [UIImage imageNamed:name inBundle:[NSBundle ctassetsPickerControllerBundle] compatibleWithTraitCollection:nil];
+//    }
+//    else
+//    {
         return [UIImage imageNamed:[NSString stringWithFormat:@"CTAssetsPickerController.bundle/%@", name]];
-    }
+//    }
 }
 
 @end
